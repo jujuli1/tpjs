@@ -1,0 +1,123 @@
+body{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: bisque;
+}
+
+@font-face {
+  font-family: 'yugioh';
+  src: url('fonts/yu-gi-oh-matrix-bold.ttf') format('truetype');
+}
+
+h1{
+  font-family: 'yugioh', sans-serif;
+
+}
+
+h2{
+  font-family: 'yugioh', sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+header{
+  font-family: 'yugioh', sans-serif;
+  display: flex;
+  gap: 150px;
+  margin-top: 2%;
+  margin-bottom: 10%;
+}
+
+input{
+  font-family: 'yugioh', sans-serif;
+  width: 195%;
+  height: 50px;
+}
+
+#login{
+  background-color: orange;
+  border-radius: 10px;
+  width: 200%;
+  height: 50px;
+}
+
+.illustrationMemory{
+
+    width: 20%;
+}
+
+ul{
+
+  display: flex;
+  list-style: none;
+  gap: 60px;
+}
+
+.carte{
+    background-image: url("/img/yugi.png");
+    width: 187px;
+    height: 277px;
+    cursor: pointer;
+}
+
+.ulTurn{
+
+    background-image: url("/img/YGO-Back-AE.webp");
+    width: 201px;
+  height: 293px;
+  cursor: pointer;
+}
+
+.lesCartes{
+  
+  background-image: url('./img/terrain-yu-gi-oh-speed-duel.jpg');
+  width: 78%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 496px;
+  border-radius: 10px;
+}
+
+.winOrLoose{
+  font-size: 50px;
+  font-family: 'yugioh', sans-serif;
+}
+
+
+
+.retry{
+  position: absolute;
+  background-color: bisque;
+  border: bisque;
+  font-size: 25px;
+  top: 130px;
+  left: 185px;
+  cursor: pointer;
+}
+
+#loggin{
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-right: 180px;
+}
+
+#local{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-right: 180px;
+}
+
+#valider{
+  background-color: orange;
+  border-radius: 10px;
+  width: 200%;
+  height: 50px;
+}
