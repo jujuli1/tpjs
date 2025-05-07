@@ -4,7 +4,6 @@ const ulTurn = document.getElementsByClassName("ulTurn");
 
 // tableau pour stocker le premier résultat afin de pouvoir le comparer
 let valeurCarte = [];
-let tableauCarte =[1, 2, 3, 4]
 let count = 0;
 let score = 0;
 let scoreAdverse = 0;
@@ -72,8 +71,8 @@ function recto() {
 function adverse(){
 
     
-    let random1 = Math.floor(Math.random() * 2);
-    let random2 = Math.floor(Math.random() * 2);
+    let random1 = Math.floor(Math.random() * 4);
+    let random2 = Math.floor(Math.random() * 4);
     
 
     
@@ -90,8 +89,16 @@ function adverse(){
 
 
 function jeu() {
-  let random = Math.floor(Math.random() * 2);
+  
 
+  let tableauCarte =[1, 2, 3, 4]
+  let cartas = Math.floor(Math.random() * tableauCarte.length)
+  let cartas2 = Math.floor(Math.random() * tableauCarte.length)
+  let aleaCarte = tableauCarte[cartas]
+  let aleaCarte2 = tableauCarte[cartas2]
+  
+  let tirage1 = aleaCarte
+  let tirage2 = aleaCarte2
   
   for (let i = 0; i <= 10; i++) {
     
@@ -100,16 +107,16 @@ function jeu() {
     //compare le contenue de valeurCarte a celui du random
     let victoire = valeurCarte.includes(random);
     // si le chiffre tiré par la carte random est un doublon de celui tiré dans le tableau valeurCarte, alors gagne et incrémente le score
-    if (victoire) {
+    if (tirage1 === tirage2) {
       Score()
       
 
 
       const text = (document.getElementsByClassName(
         "winOrLoose"
-      )[0].innerText = `${random} | ${valeurCarte}  Gagné, tien, prend une sucette !`);
+      )[0].innerText = `${tirage1} | ${tirage2}  Gagné, tien, prend une sucette !`);
 
-      console.log("doublon ! " + random);
+      console.log("doublon ! ");
       compteur();
       verso();
     } else {
