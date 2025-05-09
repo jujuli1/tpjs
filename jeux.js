@@ -1,4 +1,5 @@
 let li = document.getElementsByClassName("carte");
+let btn = document.getElementsByClassName("tirage")
 
 const ulTurn = document.getElementsByClassName("ulTurn");
 
@@ -8,28 +9,45 @@ let count = 0;
 let score = 0;
 let scoreAdverse = 0;
 
+let tableauCarte = [1,2,3,4]
+
+  let imageCarte = {
+
+    1: "img/sardine.webp",
+    2: "img/yugioh.jpg",
+    3: "img/deadpool.jpg",
+    4: "img/gnome.webp"
+  }
+
+// fonction retourne les carte (max 2) en attribuant la classe "ulTurn" a la carte cliqué
+function recto() {
+  for (let i = 0; i < btn.length; i++) {
+    btn[i].addEventListener("click", function() {
+      li[i].classList.add("pioche");
+      
+      
+    });
+  }
+}
+
+
+
 // fonction compteur de point et de coup (max 2)
 function compteur() {
   // compteur de coup
-  let count = 0;
+  
   const maListe = document.querySelectorAll(".lesCartes .carte");
+ 
 
+  
   maListe.forEach((carte) => {
     carte.addEventListener("click", function () {
-      count++;
-      console.log(count);
-      if (count === 2) {
-        
-        count = 0;
-        valeurCarte.length = 0;
-        console.log("tour terminé");
-        
-        verso();
-        
-      }
       
+  alert("fonction compteur")
+
     });
   });
+
   
   
 }
@@ -48,93 +66,195 @@ function Score(){
 function verso() {
   const li = document.querySelectorAll("li");
 
+  
+    
   li.forEach(function (element) {
-    element.classList.remove("ulTurn");
-    element.classList.add("carte");
+
+    
+      element.classList.remove("pioche");
+      element.classList.add("carte");
+
+    
+    
   });
+
 }
 
-// fonction retourne les carte (max 2) en attribuant la classe "ulTurn" a la carte cliqué
-function recto() {
-  for (let i = 0; i < li.length; i++) {
-    li[i].addEventListener("click", function () {
-      li[i].classList.add("ulTurn");
 
-      jeu();
-      if(i === 2){
-        adverse()
-      }
-    });
-  }
-}
 
 function adverse(){
 
+    valeurCarte.length=0;
     
     let random1 = Math.floor(Math.random() * 4);
     let random2 = Math.floor(Math.random() * 4);
     
-
     
 
     if(random1 === random2){
         scoreAdverse++
         const textScoreAdverse = document.getElementsByClassName('adversPoints')[0].innerText = `Score de l'adversaire : ${scoreAdverse}`
         alert('Fin du tour adverse: win')
+        verso()
+        
     }else{
         alert('Fin du tour adverse : loose')
+        verso()
+        
     }  
 
+    
+
+    
+
 }
 
-
-function jeu() {
+function aleaCarte(){
   
-
-  let tableauCarte =[1, 2, 3, 4]
   let cartas = Math.floor(Math.random() * tableauCarte.length)
-  let cartas2 = Math.floor(Math.random() * tableauCarte.length)
   let aleaCarte = tableauCarte[cartas]
-  let aleaCarte2 = tableauCarte[cartas2]
-  
-  let tirage1 = aleaCarte
-  let tirage2 = aleaCarte2
-  
-  for (let i = 0; i <= 10; i++) {
+
+  let img = document.createElement('img');
     
-    console.log(` score = ${score} `);
+    img.src = imageCarte[aleaCarte];
+    
+    img.style.width = '200px';
+    document.body.appendChild(img)
+    document.getElementById('zoneCarte').appendChild(img)
 
-    //compare le contenue de valeurCarte a celui du random
-    let victoire = valeurCarte.includes(random);
-    // si le chiffre tiré par la carte random est un doublon de celui tiré dans le tableau valeurCarte, alors gagne et incrémente le score
-    if (tirage1 === tirage2) {
-      Score()
-      
-
-
-      const text = (document.getElementsByClassName(
-        "winOrLoose"
-      )[0].innerText = `${tirage1} | ${tirage2}  Gagné, tien, prend une sucette !`);
-
-      console.log("doublon ! ");
-      compteur();
-      verso();
-    } else {
-      // sinon perd
-      const text = (document.getElementsByClassName(
-        "winOrLoose"
-      )[0].innerText = `${random} | ${valeurCarte}`);
-      valeurCarte.push(random);
-      console.log("loupé !");
-      
-
-    }
+    console.log(tableauCarte[cartas])
+    return tableauCarte[cartas]
 
     
-    return ;
-  }
 }
 
-recto();
-compteur();
+
+let tirageCarte1 
+let tirageCarte2 
+let tirageCarte3
+let tirageCarte4
+
+
+
+
+function comparaison(){
+
+  
+
+  if(valeurCarte[0] === valeurCarte[1]){
+    alert("u win")
+    
+    Score()
+    adverse()
+    verso()
+  }else{
+    alert("u loose")
+    adverse()
+    verso()
+  }
+
+  
+    
+    
+    
+    
+  }
+
+  
+
+
+
+function tiragePremier() {
+
+  count++;
+  let tirageCarte1 = aleaCarte()
+  valeurCarte.push(tirageCarte1)
+  console.log("valeur :", valeurCarte[0])
+
+    console.log("si count = 1",tirageCarte1)
+      
+      let sortie = document.getElementsByClassName('sortie')[0].innerText = ` Premiere pioche :  ${tirageCarte1}`
+      recto()
+
+      if(count === 2){
+        comparaison()
+      }
+
+     
+  
+
+  
+
+    
+
+    
+  }
+
+function tirageDeux(){
+
+  count++;
+    let tirageCarte2 = aleaCarte()
+    valeurCarte.push(tirageCarte2)
+  console.log("valeur :", valeurCarte)
+
+    console.log("si count = 2",tirageCarte2)
+   
+    let sortie2 = document.getElementsByClassName('sortie2')[0].innerText = ` Deuxieme pioche :  ${tirageCarte2}`
+    
+    if(count === 2){
+      comparaison()
+    }
+    
+  }
+
+  function tirageTrois(){
+    count++;
+    let tirageCarte3 = aleaCarte()
+    valeurCarte.push(tirageCarte3)
+  console.log("valeur :", valeurCarte)
+
+    console.log("si count = 2",tirageCarte2)
+   
+    let sortie2 = document.getElementsByClassName('sortie2')[0].innerText = ` Deuxieme pioche :  ${tirageCarte3}`
+
+    if(count === 2){
+      comparaison()
+    }
+  }
+
+  function tirageQuatre(){
+    count++;
+    let tirageCarte3 = aleaCarte()
+    valeurCarte.push(tirageCarte4)
+  console.log("valeur :", valeurCarte)
+
+    console.log("si count = 2",tirageCarte4)
+   
+    let sortie2 = document.getElementsByClassName('sortie2')[0].innerText = ` Deuxieme pioche :  ${tirageCarte4}`
+
+    if(count === 2){
+      comparaison()
+    }
+  }
+
+  
+
+  
+
+  recto()
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
 

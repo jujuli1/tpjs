@@ -61,12 +61,25 @@ ul{
     background-image: url("/img/yugi.png");
     width: 187px;
     height: 277px;
-    cursor: pointer;
+    
+    
+}
+
+.pioche {
+  background-image: url("/img/YGO-Back-AE.webp");
+  width: 202px;
+  height: 290px;
+  animation: pioche 2s  ;
+}
+
+@keyframes pioche{
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(180deg); }
 }
 
 .ulTurn{
 
-    background-image: url("/img/YGO-Back-AE.webp");
+  background-image: url("/img/YGO-Back-AE.webp");
     width: 201px;
   height: 293px;
   cursor: pointer;
@@ -81,6 +94,7 @@ ul{
   justify-content: center;
   height: 496px;
   border-radius: 10px;
+  flex-direction: column;
 }
 
 .winOrLoose{
@@ -120,4 +134,62 @@ ul{
   border-radius: 10px;
   width: 200%;
   height: 50px;
+}
+
+#zoneCarte{
+
+  
+  position: absolute;
+  display: flex;
+  gap: 50px;
+  margin-left: 10vh;
+  margin-top: 40%;
+}
+
+#zoneCarte2{
+  display: none;
+  
+}
+
+.lesBoutons{
+  
+  display: flex;
+  flex-direction: row;
+  gap: 45px;
+  padding-left: 40px;
+}
+
+.lesResultats{
+  display: flex;
+  gap: 40px;
+  font-size: 50px;
+  font-family: 'yugioh', sans-serif;
+  margin-top: 6%;
+}
+
+.tirage{
+  font-family: 'yugioh', sans-serif;
+  height: 50px;
+  width: 200px;
+  border: 1px;
+  border-radius: 35px;
+  cursor: grabbing;
+  transform: translateY(10px);
+  transition: transform 0.6s ease-in-out;
+}
+
+.tirage:hover{
+
+  transform: translateY(0)
+}
+
+.points{
+  font-size: 30px;
+  font-family: 'yugioh', sans-serif;
+}
+
+.adversPoints{
+  font-size: 30px;
+  font-family: 'yugioh', sans-serif;
+  color: red;
 }

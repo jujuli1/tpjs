@@ -12,8 +12,18 @@
 
         <a href="/loggin.html">Acceuil</a>
     </header>
+
+    
     
     <div class="lesCartes">
+
+        <div class="lesBoutons">
+
+            <button type="submit" id="tirage1" class="tirage" onclick="tiragePremier()">Piocher la premiere carte</button>
+        <button type="submit" id="tirage2" class="tirage" onclick="tirageDeux()">Piocher la deuxième carte</button>
+        <button type="submit" id="tirage1" class="tirage" onclick="tirageTrois()">Piocher la troisième carte</button>
+        <button type="submit" id="tirage2" class="tirage" onclick="tirageQuatre()">Piocher la quatrième carte</button>
+        </div>
 
         <ul>
 
@@ -28,10 +38,23 @@
 
     
         <p class="winOrLoose"></p>
+        <div class="lesResultats">
+            <p class="sortie"></p>
+        <p class="sortie2"></p>
+        </div>
+
         <p class="points"></p>
         <p class="adversPoints"></p>
+        
+        
+        
+        
+        <p class="adversPoints"></p>
 
-    <button onclick="recto()" class="retry">↪️</button>
+    <div class="zoneCarte" id="zoneCarte">
+
+
+    </div>
 
 
     
