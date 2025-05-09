@@ -1,5 +1,5 @@
-let li = document.getElementsByClassName("carte");
-let btn = document.getElementsByClassName("tirage")
+let li = document.querySelectorAll(".carte");
+const btn = document.querySelectorAll(".tirage")
 
 const ulTurn = document.getElementsByClassName("ulTurn");
 
@@ -19,14 +19,18 @@ let tableauCarte = [1,2,3,4]
     4: "img/gnome.webp"
   }
 
-// fonction retourne les carte (max 2) en attribuant la classe "ulTurn" a la carte cliqué
+// fonction retourne les carte (max 2) en attribuant la classe "pioche" au clic sur le bouton associé
 function recto() {
-  for (let i = 0; i < btn.length; i++) {
+  for (let i = 0; i < li.length; i++) {
     btn[i].addEventListener("click", function() {
+      
       li[i].classList.add("pioche");
       
       
+      
     });
+
+    return
   }
 }
 
@@ -60,6 +64,9 @@ function Score(){
   if(score === 3){
     alert('YOU WIN !!!')
   }
+
+  
+  return 
 }
 
 // fonction remet les cartes a leur position initial apres 2 coup
@@ -75,8 +82,9 @@ function verso() {
       element.classList.add("carte");
 
     
-    
   });
+return
+  
 
 }
 
@@ -95,16 +103,16 @@ function adverse(){
         scoreAdverse++
         const textScoreAdverse = document.getElementsByClassName('adversPoints')[0].innerText = `Score de l'adversaire : ${scoreAdverse}`
         alert('Fin du tour adverse: win')
-        verso()
+        
         
     }else{
         alert('Fin du tour adverse : loose')
-        verso()
+        
         
     }  
 
     
-
+return
     
 
 }
@@ -140,23 +148,21 @@ let tirageCarte4
 function comparaison(){
 
   
-
   if(valeurCarte[0] === valeurCarte[1]){
     alert("u win")
     
     Score()
     adverse()
-    verso()
+    recto()
+    
   }else{
     alert("u loose")
     adverse()
-    verso()
+    recto()
+    
   }
 
-  
-    
-    
-    
+  return
     
   }
 
@@ -166,7 +172,9 @@ function comparaison(){
 
 function tiragePremier() {
 
-  count++;
+
+
+    count++;
   let tirageCarte1 = aleaCarte()
   valeurCarte.push(tirageCarte1)
   console.log("valeur :", valeurCarte[0])
@@ -174,24 +182,22 @@ function tiragePremier() {
     console.log("si count = 1",tirageCarte1)
       
       let sortie = document.getElementsByClassName('sortie')[0].innerText = ` Premiere pioche :  ${tirageCarte1}`
-      recto()
+      
 
       if(count === 2){
         comparaison()
       }
+     return
 
-     
-  
-
-  
-
-    
-
-    
   }
+  
+    
+  
 
 function tirageDeux(){
 
+
+  
   count++;
     let tirageCarte2 = aleaCarte()
     valeurCarte.push(tirageCarte2)
@@ -204,10 +210,13 @@ function tirageDeux(){
     if(count === 2){
       comparaison()
     }
-    
+    return
   }
 
+
   function tirageTrois(){
+
+    
     count++;
     let tirageCarte3 = aleaCarte()
     valeurCarte.push(tirageCarte3)
@@ -216,13 +225,18 @@ function tirageDeux(){
     console.log("si count = 2",tirageCarte2)
    
     let sortie2 = document.getElementsByClassName('sortie2')[0].innerText = ` Deuxieme pioche :  ${tirageCarte3}`
+    
+
 
     if(count === 2){
       comparaison()
     }
+    return
   }
 
+
   function tirageQuatre(){
+
     count++;
     let tirageCarte3 = aleaCarte()
     valeurCarte.push(tirageCarte4)
@@ -231,10 +245,12 @@ function tirageDeux(){
     console.log("si count = 2",tirageCarte4)
    
     let sortie2 = document.getElementsByClassName('sortie2')[0].innerText = ` Deuxieme pioche :  ${tirageCarte4}`
+    
 
     if(count === 2){
       comparaison()
     }
+    return
   }
 
   
